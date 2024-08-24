@@ -1,64 +1,40 @@
-import React from "react"
-import {
-  View,
-  Image,
-  Text,
-  ScrollView,
-  SafeAreaView,
-  StyleSheet
-} from "react-native"
+import React, { useState } from "react";
+import { SafeAreaView, StyleSheet, View, Text, TextInput, Button } from "react-native";
 
-const WelcomeScreen = () => {
-  return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollView}>
-        <View style={styles.group} />
-        <View style={styles.group}>
-          <Image style={styles.logo} source={require("./logo.png")} />
-          <Text style={styles.text}>
-            Let's build something amazing together!
-          </Text>
-        </View>
-        <Text style={styles.footer}>Made with ❤️ by Crowdbotics</Text>
-      </ScrollView>
-    </SafeAreaView>
-  )
-}
+const LoginScreen = () => {
+  const [mobileNumber, setMobileNumber] = useState("");
+  return <SafeAreaView style={styles.container}>
+      <View style={styles.innerContainer}>
+        <Text style={styles.title}>Login</Text>
+        <TextInput style={styles.input} placeholder="Enter your mobile number" keyboardType="phone-pad" value={mobileNumber} onChangeText={setMobileNumber} />
+        <Button title="Login" onPress={() => alert("Login pressed")} />
+      </View>
+    </SafeAreaView>;
+};
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#F8F8FC",
-    height: "100%"
-  },
-  scrollView: {
     flex: 1,
+    justifyContent: "center",
     alignItems: "center",
-    justifyContent: "space-between",
-    padding: 20
+    backgroundColor: "#F8F8FC"
   },
-  group: {
-    alignItems: "center"
+  innerContainer: {
+    width: "80%"
   },
-  logo: {
-    height: 180,
-    width: 180,
-    padding: 40,
-    borderRadius: 30,
-    margin: 40
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#333",
+    marginBottom: 20,
+    textAlign: "center"
   },
-  text: {
-    textAlign: "center",
-    fontSize: 28,
-    color: "#828AB0",
-    fontWeight: 700
-  },
-  footer: {
-    textAlign: "center",
-    fontSize: 18,
-    color: "#828AB0",
-    fontWeight: 700,
-    marginBottom: 20
+  input: {
+    height: 40,
+    borderColor: "#ccc",
+    borderWidth: 1,
+    marginBottom: 20,
+    paddingHorizontal: 10
   }
-})
-
-export default WelcomeScreen
+});
+export default LoginScreen;
